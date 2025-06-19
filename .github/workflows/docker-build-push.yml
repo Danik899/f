@@ -20,7 +20,7 @@ jobs:
           username: token
           password: CRgAAAAAAy25i8Yu-vBImuKUmX69c9qBkOe1IObZ
 
-      - name: Build FoodBackend Docker image
+      - name: Build KBIPMobileBackend Docker image
         run: |
           docker build -t cr.selcloud.ru/danik/api:latest ./KBIPMobileBackend
           docker push cr.selcloud.ru/danik/api:latest
