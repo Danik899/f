@@ -1,0 +1,26 @@
+name: Build and Publish Docker Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          registry: cr.selcloud.ru
+          username: token
+          password: CRgAAAAAAy25i8Yu-vBImuKUmX69c9qBkOe1IObZ
+
+      - name: Build KBIPMobileBackend Docker image
+        run: |
+          docker build -t cr.selcloud.ru/danik/api:latest ./KBIPMobileBackend
+          docker push cr.selcloud.ru/danik/api:latest
